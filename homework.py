@@ -1,21 +1,60 @@
-student_grades ={'john':85,'jane':90, 'jim':95}
-john_grade = student_grades['john']
-print(john_grade)
-#Output:85
+import pgzrun
+from random import randint
 
-jane_grade = student_grades['jane']
-print(jane_grade)
-#Output:90
+WIDTH = 600
+HEIGHT = 500
 
-jim_grade = student_grades['jim']
-print(jim_grade)
-#Output:95
+score = 0
+game_over = False
 
-if john in student_grades:
-    print(student_grades['john'])
+cat = Actor("cat")
+cat.pos = 100,100
 
- if jane in student_grades:
-    print(student_grades['jane'])   
+mouse = Actor("mouse")
+mouse.pos = 200,200
 
-if jim in student_grades:
-     print(student_grades['jim'])
+def draw():
+  screen.blit("background", (0,0))
+  mouse.draw()
+  cat.draw()
+  screen.draw.text("score: " + str(score), color="black")
+
+  if game_over:
+    screen.fill("pink")
+    screen.draw.text("Times up! your final score: ")
+    fontsize==40, color==("red")
+
+    
+def place_flower ():
+  mouse.x = randint(70, (WIDTH-70))
+  mouse.y = randint(70, HEIGHT-70)
+
+
+def time_up():
+  global game_over
+  game_over = True 
+
+def update():
+  global score
+
+  if keyboard.left:
+    cat.x = cat.x - 2
+  if keyboard.right:
+    cat.x = cat.x + 2
+  if keyboard.up:
+    cat.y = cat.y - 2
+  if keyboard.down:
+    cat.y = cat.y + 2 
+
+mouse_collected = cat.colliderect(mouse)
+
+if mouse_collected:
+  score = score + 10
+  place_mouse()
+
+
+  clock.schedule(time_up, 60.0)
+
+
+
+  pgzrun.go
